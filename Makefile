@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rtlsdr_wsprd
 PKG_VERSION:=0.2
-PKG_RELEASE:=1.2
+PKG_RELEASE:=1.91
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Guenael/rtlsdr-wsprd.git
@@ -27,6 +27,7 @@ define Build/Prepare
 	mkdir -p $(PKG_BUILD_DIR)
 	$(CP) /home/openwrt/tmp/rtlsdr-wsprd/* $(PKG_BUILD_DIR)/
 #	$(call Build/Prepare/Default)
+#	export PKG_CONFIG_PATH=$(BUILD_DIR)/rtl-sdr-0.5.3-20150608-/src/ 
 endef
 
 #TARGET_LDFLAGS+= -L$(TOOLCHAIN_DIR)/usr/lib -L$(TOOLCHAIN_DIR)/lib -Wl,-rpath=$(TOOLCHAIN_DIR)/lib
@@ -35,7 +36,7 @@ define Package/rtlsdr_wsprd
   $(call Package/rtlsdr_wsprd/Default)
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+rtl-sdr +libcurl +ntpdate +libpthread +fftw3f
+  DEPENDS:=+librtlsdr +libcurl +ntpdate +libpthread +fftw3f
 endef
 
 define Package/rtlsdr_wsprd/description
@@ -44,10 +45,15 @@ define Package/rtlsdr_wsprd/description
   without maintenance and help to increase the WSPR network
 endef
 
+#define Package/csdr/conffiles
+#  /etc/config/csdr
+#endef
 
 define Package/rtlsdr_wsprd/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/$(PKG_NAME) $(1)/usr/bin 
+#	$(INSTALL_DIR) $(1)/etc/multimon-ng
+#	$(INSTALL_DATA) ./files/multimon-ng.template $(1)/etc/multimon-ng/config.template
 endef
 
 $(eval $(call BuildPackage,rtlsdr_wsprd))
