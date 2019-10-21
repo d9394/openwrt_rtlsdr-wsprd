@@ -25,7 +25,7 @@ endef
 
 define Build/Prepare
 	mkdir -p $(PKG_BUILD_DIR)
-	$(CP) /home/openwrt/rtlsdr-wsprd/src/* $(PKG_BUILD_DIR)/
+	$(CP) /home/openwrt/openwrt_rtlsdr-wsprd/src/* $(PKG_BUILD_DIR)/
 #	$(call Build/Prepare/Default)
 #	export PKG_CONFIG_PATH=$(BUILD_DIR)/rtl-sdr-0.5.3-20150608-/src/ 
 endef
