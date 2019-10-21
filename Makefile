@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rtlsdr_wsprd
 PKG_VERSION:=0.2
-PKG_RELEASE:=1.91
+PKG_RELEASE:=2.00
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/Guenael/rtlsdr-wsprd.git
@@ -25,7 +25,7 @@ endef
 
 define Build/Prepare
 	mkdir -p $(PKG_BUILD_DIR)
-	$(CP) /home/openwrt/tmp/rtlsdr-wsprd/* $(PKG_BUILD_DIR)/
+	$(CP) /home/openwrt/rtlsdr-wsprd/src/* $(PKG_BUILD_DIR)/
 #	$(call Build/Prepare/Default)
 #	export PKG_CONFIG_PATH=$(BUILD_DIR)/rtl-sdr-0.5.3-20150608-/src/ 
 endef
