@@ -36,7 +36,7 @@ define Package/rtlsdr_wsprd
   $(call Package/rtlsdr_wsprd/Default)
   SECTION:=utils
   CATEGORY:=Utilities
-  DEPENDS:=+librtlsdr +libcurl +ntpdate +libpthread +fftw3f
+  DEPENDS:=+librtlsdr +libcurl +ntpdate +libpthread +fftw3
 endef
 
 define Package/rtlsdr_wsprd/description
@@ -57,3 +57,4 @@ define Package/rtlsdr_wsprd/install
 endef
 
 $(eval $(call BuildPackage,rtlsdr_wsprd))
+
